@@ -109,16 +109,20 @@ main header > * {
   font-size: 1.3rem;
   font-weight: bold;
   color: #ffbd39;
-  text-shadow: 1px 1px white;
+  text-shadow: 1px 1px rgba(255, 255, 255, 0.9);
 }
 main header #score, main header #best-score {
   text-align: right;
+}
+main header #best-score, main header #best-level {
+  text-shadow: 1px 1px white;
 }
 main footer {
   height: 100px;
   background-color: #e61c5d;
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -131,19 +135,117 @@ main footer #paddle {
   transform: translate(-50%);
   background-color: white;
   border: 3px solid black;
+  text-align: center;
+  color: black;
 }
-main footer #hits {
+main footer #hits, main footer #best-hits {
   display: inline;
-  font-size: 1.3rem;
   font-weight: bold;
   color: #ffbd39;
-  text-shadow: 1px 1px white;
+  text-shadow: 1px 1px #3a0088;
+}
+main footer #hits {
+  font-size: 1.1rem;
+  padding: 1rem 0;
+}
+main footer #best-hits {
+  font-size: 1.3rem;
+  text-shadow: 2px 2px #3a0088;
 }
 
 #blocks-and-ball {
   background: #3a0088;
   flex: 1;
   position: relative;
+}
+#blocks-and-ball #blocs {
+  position: absolute;
+  display: grid;
+  width: 100%;
+  height: 145px;
+  justify-content: center;
+  align-content: flex-end;
+  grid-template-columns: repeat(5, 150px);
+  column-gap: 30px;
+  grid-template-rows: repeat(3, 25px);
+  row-gap: 30px;
+}
+#blocks-and-ball #blocs .bloc {
+  text-align: center;
+  background: lime;
+  border: 2px solid black;
+}
+#blocks-and-ball #blocs .bloc1, #blocks-and-ball #blocs .bloc2, #blocks-and-ball #blocs .bloc3, #blocks-and-ball #blocs .bloc4, #blocks-and-ball #blocs .bloc5 {
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+#blocks-and-ball #blocs .bloc6, #blocks-and-ball #blocs .bloc7, #blocks-and-ball #blocs .bloc8, #blocks-and-ball #blocs .bloc9, #blocks-and-ball #blocs .bloc10 {
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+#blocks-and-ball #blocs .bloc11, #blocks-and-ball #blocs .bloc12, #blocks-and-ball #blocs .bloc13, #blocks-and-ball #blocs .bloc14, #blocks-and-ball #blocs .bloc15 {
+  grid-row-start: 3;
+  grid-row-end: 3;
+}
+#blocks-and-ball #blocs .bloc1 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+#blocks-and-ball #blocs .bloc2 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+#blocks-and-ball #blocs .bloc3 {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+#blocks-and-ball #blocs .bloc4 {
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+#blocks-and-ball #blocs .bloc5 {
+  grid-column-start: 5;
+  grid-column-end: 6;
+}
+#blocks-and-ball #blocs .bloc6 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+#blocks-and-ball #blocs .bloc7 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+#blocks-and-ball #blocs .bloc8 {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+#blocks-and-ball #blocs .bloc9 {
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+#blocks-and-ball #blocs .bloc10 {
+  grid-column-start: 5;
+  grid-column-end: 6;
+}
+#blocks-and-ball #blocs .bloc11 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+#blocks-and-ball #blocs .bloc12 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+#blocks-and-ball #blocs .bloc13 {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+#blocks-and-ball #blocs .bloc14 {
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+#blocks-and-ball #blocs .bloc15 {
+  grid-column-start: 5;
+  grid-column-end: 6;
 }
 #blocks-and-ball #ball {
   width: 20px;

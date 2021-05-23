@@ -117,11 +117,13 @@ main {
             font-size: 1.3rem;
             font-weight: bold;
             color: $writing-text;
-            text-shadow: 1px 1px white;
+            text-shadow: 1px 1px rgba(255, 255, 255, .9);
         }
         #score, #best-score {
             text-align: right;
         }
+        #best-score, #best-level {
+            text-shadow: 1px 1px white;}
     }
 
     footer {
@@ -129,6 +131,7 @@ main {
         background-color: $footer-bkg;
         position: relative;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
 
@@ -139,14 +142,25 @@ main {
             transform: translate(-50%);
             background-color: white;
             border: $border;
+            text-align: center;
+            color: black;
+        }
+
+        #hits, #best-hits {
+            display: inline;
+            font-weight: bold;
+            color: $writing-text;
+            text-shadow: 1px 1px $main-bkg;
         }
 
         #hits {
-            display: inline;
+            font-size: 1.1rem;
+            padding: 1rem 0;
+        }
+
+        #best-hits {
             font-size: 1.3rem;
-            font-weight: bold;
-            color: $writing-text;
-            text-shadow: 1px 1px white;
+            text-shadow: 2px 2px $main-bkg;
         }
     }
 }
@@ -155,6 +169,98 @@ main {
     background: $main-bkg;
     flex: 1;
     position: relative;
+
+    #blocs {
+        position: absolute;
+        display: grid;
+        width: 100%; height: 145px;
+        justify-content: center;
+        align-content: flex-end;
+        grid-template-columns: repeat(5, 150px);
+        column-gap: 30px;
+        grid-template-rows: repeat(3, 25px);
+        row-gap: 30px;
+
+        .bloc {
+            text-align: center;
+            background: lime; //CREER UN CLASSE ACTIVE SUR LES BLOCS VIA JS ???
+            border: 2px solid black;
+        }
+
+        .bloc1, .bloc2, .bloc3, .bloc4, .bloc5{
+            grid-row-start: 1;
+            grid-row-end: 1;
+        }
+        .bloc6, .bloc7, .bloc8, .bloc9, .bloc10 {
+            grid-row-start: 2;
+            grid-row-end: 2;
+        }
+        .bloc11, .bloc12, .bloc13, .bloc14, .bloc15 {
+            grid-row-start: 3;
+            grid-row-end: 3;
+        }
+
+        .bloc1 {
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+        .bloc2 {
+            grid-column-start: 2;
+            grid-column-end: 3;
+        }
+        .bloc3 {
+            grid-column-start: 3;
+            grid-column-end: 4;
+        }
+        .bloc4 {
+            grid-column-start: 4;
+            grid-column-end: 5;
+        }
+        .bloc5 {
+            grid-column-start: 5;
+            grid-column-end: 6;
+        }
+        .bloc6 {
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+        .bloc7 {
+            grid-column-start: 2;
+            grid-column-end: 3;
+        }
+        .bloc8 {
+            grid-column-start: 3;
+            grid-column-end: 4;
+        }
+        .bloc9 {
+            grid-column-start: 4;
+            grid-column-end: 5;
+        }
+        .bloc10 {
+            grid-column-start: 5;
+            grid-column-end: 6;
+        }
+        .bloc11 {
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+        .bloc12 {
+            grid-column-start: 2;
+            grid-column-end: 3;
+        }
+        .bloc13 {
+            grid-column-start: 3;
+            grid-column-end: 4;
+        }
+        .bloc14 {
+            grid-column-start: 4;
+            grid-column-end: 5;
+        }
+        .bloc15 {
+            grid-column-start: 5;
+            grid-column-end: 6;
+        }
+    }
 
     #ball {
         width: 20px; height: 20px;
