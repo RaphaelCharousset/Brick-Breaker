@@ -65,7 +65,6 @@ main.addEventListener('mousemove', e => { //*Move paddle with mouse
 });
 
 let ballMoving = () => {
-    // let speed = 5 * (Math.pow(0.9, levelCount)); //!marche pas, l'interval veut pas aller plus vite
     let speed = 23 * (8 / (levelCount + 8)); 
     let levelProgress = 0;
     level.innerText = `Level : ${levelCount}`;
@@ -215,6 +214,3 @@ btn.addEventListener('click', () => {
     gameIsRunning = true;
     ballMoving();
 })
-
-
-
