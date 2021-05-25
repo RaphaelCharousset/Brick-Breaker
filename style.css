@@ -43,7 +43,7 @@ main #game-over {
   letter-spacing: 5px;
   color: #ffbd39;
   text-shadow: 0 4px #930077, 0 -4px #e61c5d, -4px 0 white;
-  padding: 1rem;
+  padding: 2rem;
 }
 main #rules-opener {
   z-index: 999;
