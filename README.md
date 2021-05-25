@@ -1,4 +1,4 @@
-# Projets-perso
+# Brick-Breaker
 
 ## Hi there
 
