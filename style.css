@@ -1,4 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap");
+@keyframes slideInFromTop {
+  from {
+    top: 0;
+  }
+  to {
+    top: 15%;
+  }
+}
+.slide-in {
+  animation: slideInFromTop 0.5s ease-in-out forwards;
+}
+
 * {
   box-sizing: border-box;
   font-family: "Orbitron", sans-serif;
@@ -17,6 +29,21 @@ main {
   flex-direction: column;
   justify-content: space-between;
   border: 3px solid black;
+}
+main #game-over {
+  display: none;
+  z-index: 998;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  font-size: 4rem;
+  font-weight: bold;
+  letter-spacing: 5px;
+  color: #ffbd39;
+  text-shadow: 0 4px #930077, 0 -4px #e61c5d, -4px 0 white;
+  padding: 1rem;
 }
 main #rules-opener {
   z-index: 999;
@@ -49,7 +76,7 @@ main #rules #rules-text {
   border-radius: 10px;
   position: absolute;
   width: 479.14px;
-  top: 25%;
+  top: 17%;
   padding: 1.5rem 2rem;
   line-height: 1.7;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
@@ -62,6 +89,10 @@ main #rules #rules-text #close-rules {
   top: 5px;
   background: url(../images/cancel_black_24dp.svg) center/cover no-repeat;
   cursor: pointer;
+  border-radius: 50%;
+}
+main #rules #rules-text #close-rules:hover {
+  box-shadow: 0 0 3px 1px black;
 }
 main #rules #rules-text li::before {
   content: "";

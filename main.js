@@ -1,26 +1,27 @@
 //* Setting rules CTA
-let rulesOpener = document.getElementById('rules-opener');
+const rulesOpener = document.getElementById('rules-opener');
 rulesOpener.addEventListener('click', () => {rules.style.display = "flex"});
-let rulesCloser = document.getElementById('close-rules');
+const rulesCloser = document.getElementById('close-rules');
 rulesCloser.addEventListener('click', () => {rules.style.display = "none"});
 
 let gameIsRunning = false;
+const gameOver = document.getElementById('game-over');
 
-let level = document.getElementById('level');
+const level = document.getElementById('level');
 let levelCount = 0;
-let bestLevel = document.getElementById('best-level');
+const bestLevel = document.getElementById('best-level');
 let bestLevelCount = 0;
-let score = document.getElementById('score');
+const score = document.getElementById('score');
 let scoreCount = 0;
-let bestScore = document.getElementById('best-score');
+const bestScore = document.getElementById('best-score');
 let bestScoreCount = 0;
 
-let hits = document.getElementById('hits');
+const hits = document.getElementById('hits');
 let hitsCount = 0;
-let besthits = document.getElementById('best-hits');
+const besthits = document.getElementById('best-hits');
 let bestHitsCount = 0;
 
-let addPointsAndCheckBestScore = () => {
+const addPointsAndCheckBestScore = () => {
     scoreCount++;
     score.textContent = `Score : ${scoreCount}`;
     if (scoreCount > bestScoreCount) {
@@ -29,14 +30,14 @@ let addPointsAndCheckBestScore = () => {
     }
 }
 
-let paddle = document.getElementById('paddle');
-let main = document.getElementById('main');
-let blocksAndBall = document.getElementById('blocks-and-ball');
-let ball = document.getElementById('ball');
+const paddle = document.getElementById('paddle');
+const main = document.getElementById('main');
+const blocksAndBall = document.getElementById('blocks-and-ball');
+const ball = document.getElementById('ball');
 
-let blocs = document.querySelectorAll('.bloc');
+const blocs = document.querySelectorAll('.bloc');
 
-let btn = document.getElementById('btn');
+const btn = document.getElementById('btn');
 
 //*Inital ball position
 let ballX = 490;
@@ -46,7 +47,7 @@ ball.style.bottom = `${ballY}px`;
 let ballGoesToRight = true;
 let ballGoesToBottom = false;
 
-//settings blocs to display none before game starts (to get the levelCount++)
+//*settings blocs to display none before game starts (to get the levelCount++)
 for (const bloc of blocs) {
     bloc.style.display = "none";
 }
@@ -64,12 +65,12 @@ main.addEventListener('mousemove', e => { //*Move paddle with mouse
   }
 });
 
-let ballMoving = () => {
+const ballMoving = () => {
     let speed = 23 * (8 / (levelCount + 8)); 
     let levelProgress = 0;
     level.innerText = `Level : ${levelCount}`;
 
-    let myInterval = setInterval(() => {
+    const myInterval = setInterval(() => {
         for (let i = 0; i < 15; i++) {
             for (const bloc of blocs) {
                 if (bloc.style.display === "none") {
@@ -130,7 +131,7 @@ let ballMoving = () => {
                             bestHitsCount = hitsCount;
                             besthits.textContent = `Hits record : ${bestHitsCount}`;
                         }
-                    } else { //! ball isn't touching the paddle and GAME OVER
+                    } else { //! ball isn't touching the paddle => GAME OVER
                         gameIsRunning = false; //* stop the game here
                         paddle.style.left = "50%";
                         ballX = 490;
@@ -140,6 +141,8 @@ let ballMoving = () => {
                         btn.style.display = "inline-block";
                         rulesOpener.style.display = "inline-block";
                         hitsCount--;
+                        gameOver.style.display = "block";
+                        gameOver.classList.add('slide-in');
                         clearInterval(myInterval);
                     }
                 } else {
@@ -202,6 +205,10 @@ btn.addEventListener('click', () => {
     for (const bloc of blocs) {
         bloc.style.display = "none";
     }
+
+    gameOver.style.display = "none";
+    gameOver.classList.remove('slide-in');
+
     levelCount = 0;
     level.textContent = `Level : ${levelCount}`;
     scoreCount = 0;
