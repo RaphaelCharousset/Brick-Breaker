@@ -28,7 +28,7 @@ const addPointsAndCheckBestScore = () => {
         bestScoreCount = scoreCount;
         bestScore.textContent = `Best score : ${bestScoreCount}`;
     }
-}
+};
 
 const paddle = document.getElementById('paddle');
 const main = document.getElementById('main');
@@ -54,7 +54,8 @@ for (const bloc of blocs) {
 
 main.addEventListener('mousemove', e => { //*Move paddle with mouse
   if (gameIsRunning) {
-    let x = e.offsetX;
+    const x = - (( parseInt(window.getComputedStyle(document.body, null).getPropertyValue("width")) - main.offsetWidth) / 2) + e.clientX;
+
     if (x <= 100) {
         paddle.style.left = "100px";
     } else if (x >= 900) {
@@ -220,4 +221,4 @@ btn.addEventListener('click', () => {
     rulesOpener.style.display = "none";
     gameIsRunning = true;
     ballMoving();
-})
+});
