@@ -1,0 +1,290 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap");
+@keyframes slideInFromTop {
+  from {
+    top: 0;
+  }
+  to {
+    top: 15%;
+  }
+}
+.slide-in {
+  animation: slideInFromTop 0.5s ease-in-out forwards;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Orbitron", sans-serif;
+}
+
+body {
+  font-size: 16px;
+}
+
+main {
+  position: relative;
+  width: 1006px;
+  height: 906px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 3px solid black;
+}
+main #game-over {
+  display: none;
+  z-index: 998;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  font-size: 4rem;
+  font-weight: bold;
+  letter-spacing: 5px;
+  color: #ffbd39;
+  text-shadow: 0 4px #930077, 0 -4px #e61c5d, -4px 0 white;
+  padding: 2rem;
+}
+main #rules-opener {
+  z-index: 999;
+  position: absolute;
+  left: 50%;
+  top: 66%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: url(../images/help_white_24dp.svg) center/cover no-repeat;
+  cursor: pointer;
+}
+main #rules-opener:hover {
+  transform: translate(-50%, -50%) scale(1.3);
+  background: url(../images/help_outline_white_24dp.svg) center/cover no-repeat;
+}
+main #rules {
+  display: none;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  justify-content: center;
+}
+main #rules #rules-text {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  position: absolute;
+  width: 479.14px;
+  top: 17%;
+  padding: 1.5rem 2rem;
+  line-height: 1.7;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+}
+main #rules #rules-text #close-rules {
+  width: 33px;
+  height: 33px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  background: url(../images/cancel_black_24dp.svg) center/cover no-repeat;
+  cursor: pointer;
+  border-radius: 50%;
+}
+main #rules #rules-text #close-rules:hover {
+  box-shadow: 0 0 3px 1px black;
+}
+main #rules #rules-text li::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url(../images/smart_toy_black_24dp.svg) center/cover no-repeat;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+main #btn {
+  z-index: 999;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 0 5px 10px rgba(230, 28, 93, 0.5);
+  background: #ffbd39;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+main #btn:hover {
+  box-shadow: 0 0 5px 10px rgba(255, 255, 255, 0.8);
+  color: #ffbd39;
+  background: #e61c5d;
+  transform: translate(-50%, -50%) scale(1.3);
+}
+main header {
+  background: #930077;
+  height: 100px;
+  border-bottom: 3px solid black;
+  display: flex;
+  flex-flow: row wrap;
+}
+main header > * {
+  padding: 0 8rem;
+  width: 50%;
+  line-height: 48.5px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ffbd39;
+  text-shadow: 1px 1px rgba(255, 255, 255, 0.9);
+}
+main header #score, main header #best-score {
+  text-align: right;
+}
+main header #best-score, main header #best-level {
+  text-shadow: 1px 1px white;
+}
+main footer {
+  height: 100px;
+  background-color: #e61c5d;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main footer #paddle {
+  width: 200px;
+  height: 25px;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%);
+  background-color: white;
+  border: 3px solid black;
+  text-align: center;
+  color: black;
+}
+main footer #hits, main footer #best-hits {
+  display: inline;
+  font-weight: bold;
+  color: #ffbd39;
+  text-shadow: 1px 1px #3a0088;
+}
+main footer #hits {
+  font-size: 1.1rem;
+  padding: 1rem 0;
+}
+main footer #best-hits {
+  font-size: 1.3rem;
+  text-shadow: 2px 2px #3a0088;
+}
+
+#blocks-and-ball {
+  background: #3a0088;
+  flex: 1;
+  position: relative;
+}
+#blocks-and-ball #blocs {
+  position: absolute;
+  display: grid;
+  width: 100%;
+  height: 145px;
+  justify-content: center;
+  align-content: flex-end;
+  grid-template-columns: repeat(5, 150px);
+  column-gap: 30px;
+  grid-template-rows: repeat(3, 25px);
+  row-gap: 30px;
+}
+#blocks-and-ball #blocs .bloc {
+  text-align: center;
+  background: lime;
+  border: 2px solid black;
+}
+#blocks-and-ball #blocs .bloc1, #blocks-and-ball #blocs .bloc2, #blocks-and-ball #blocs .bloc3, #blocks-and-ball #blocs .bloc4, #blocks-and-ball #blocs .bloc5 {
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+#blocks-and-ball #blocs .bloc6, #blocks-and-ball #blocs .bloc7, #blocks-and-ball #blocs .bloc8, #blocks-and-ball #blocs .bloc9, #blocks-and-ball #blocs .bloc10 {
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+#blocks-and-ball #blocs .bloc11, #blocks-and-ball #blocs .bloc12, #blocks-and-ball #blocs .bloc13, #blocks-and-ball #blocs .bloc14, #blocks-and-ball #blocs .bloc15 {
+  grid-row-start: 3;
+  grid-row-end: 3;
+}
+#blocks-and-ball #blocs .bloc1 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+#blocks-and-ball #blocs .bloc2 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+#blocks-and-ball #blocs .bloc3 {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+#blocks-and-ball #blocs .bloc4 {
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+#blocks-and-ball #blocs .bloc5 {
+  grid-column-start: 5;
+  grid-column-end: 6;
+}
+#blocks-and-ball #blocs .bloc6 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+#blocks-and-ball #blocs .bloc7 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+#blocks-and-ball #blocs .bloc8 {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+#blocks-and-ball #blocs .bloc9 {
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+#blocks-and-ball #blocs .bloc10 {
+  grid-column-start: 5;
+  grid-column-end: 6;
+}
+#blocks-and-ball #blocs .bloc11 {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+#blocks-and-ball #blocs .bloc12 {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+#blocks-and-ball #blocs .bloc13 {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+#blocks-and-ball #blocs .bloc14 {
+  grid-column-start: 4;
+  grid-column-end: 5;
+}
+#blocks-and-ball #blocs .bloc15 {
+  grid-column-start: 5;
+  grid-column-end: 6;
+}
+#blocks-and-ball #ball {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid white;
+  background-color: #ffbd39;
+  position: absolute;
+}
+
+/*# sourceMappingURL=style.css.map */
